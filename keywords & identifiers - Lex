@@ -1,0 +1,33 @@
+%{
+#include<stdio.h>
+%}
+%%
+if|else|while|int|switch|for|char {printf("it is a keyword",yytext);}
+[a-zA-Z0-9]+ {printf("\n%s is identifier",yytext);}
+%%
+int yywrap() { }
+int main()
+{
+while(yylex());
+}
+
+output:
+:\Users\sse\Desktop\17>set path=C:\Program Files\GnuWin32\bin
+
+C:\Users\sse\Desktop\17>flex key.l.txt
+
+C:\Users\sse\Desktop\17>set path=C:\MinGW\bin
+
+C:\Users\sse\Desktop\17>gcc lex,yy,c
+gcc: error: lex,yy,c: No such file or directory
+gcc: fatal error: no input files
+compilation terminated.
+
+C:\Users\sse\Desktop\17>gcc lex.yy.c
+
+C:\Users\sse\Desktop\17>a
+int a,b,c
+it is a keyword
+a is identifier,
+b is identifier,
+c is identifier
