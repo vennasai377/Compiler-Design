@@ -1,0 +1,37 @@
+%{
+#include<stdio.h>
+%}
+%%
+"greeks" { printf("replacement word"); }
+.|\n { putchar(yytext[0]);}
+%%
+int yywrap() {
+return 1;
+}
+int main() {
+yylex();
+return 0;
+}
+
+output:
+Microsoft Windows [Version 10.0.14393]
+(c) 2016 Microsoft Corporation. All rights reserved.
+
+C:\Users\sse\Desktop\15>set path=C:\Program Files\GnuWin32\bin
+
+C:\Users\sse\Desktop\15>flex replace.l.txt
+
+C:\Users\sse\Desktop\15>set path=C:\MinGW\bin
+
+C:\Users\sse\Desktop\15>gcc lex.yy.c
+
+C:\Users\sse\Desktop\15>a
+tejosai
+tejosai
+^Z
+
+C:\Users\sse\Desktop\15>a
+greeks
+replacement word
+tejosai
+tejosai
