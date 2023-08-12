@@ -1,0 +1,51 @@
+%{	
+int tags;
+%}
+%%
+"<"[^>]*>  { tags++; printf("%s \n", yytext); }
+.|\n { }
+%%
+int yywrap(void) {
+return 1; }
+int main(void)
+{
+FILE *f;
+char file[10];
+printf("Enter File Name : ");
+scanf("%s",file);
+f = fopen(file,"r");
+yyin = f;
+yylex();
+printf("\n Number of html tags: %d",tags);
+fclose(yyin);  
+}
+
+output:
+  Microsoft Windows [Version 10.0.14393]
+(c) 2016 Microsoft Corporation. All rights reserved.
+
+C:\Users\sse\Desktop\4>set path=C:\Program Files\GnuWin32\bin
+
+C:\Users\sse\Desktop\4>flex html.l.txt
+
+C:\Users\sse\Desktop\4>set path=C:\MinGW\bin
+
+C:\Users\sse\Desktop\4>gcc lex.yy.c
+
+C:\Users\sse\Desktop\4>a
+Enter File Name : html
+<html>
+<html>
+<body>
+<body>
+<h1>my first heading</h1>
+<h1>
+</h1>
+<p>
+<p>
+my first paragraph</p>
+</p>
+<body>
+<body>
+<html>
+<html>
