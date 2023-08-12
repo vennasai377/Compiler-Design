@@ -1,0 +1,37 @@
+%%
+[1-9][0-9]{9} {printf("\nMobile Number Valid\n");}
+.+ {printf("\nMobile Number Invalid\n");}
+%%
+int main()
+{
+printf("\nEnter Mobile Number : ");
+yylex();
+printf("\n");
+return 0;
+}
+int yywrap()
+{ } 
+
+output:
+C:\Users\sse\Desktop\10>set path=C:\Program Files\GnuWin32\bin
+
+C:\Users\sse\Desktop\10>flex mobile.l.txt
+
+C:\Users\sse\Desktop\10>set path=C:\MinGW\bin
+
+C:\Users\sse\Desktop\10>gcc lex.yy.c
+
+C:\Users\sse\Desktop\10>a
+
+Enter Mobile Number : 9966450100
+
+Mobile Number Valid
+
+^Z
+
+
+C:\Users\sse\Desktop\10>a
+
+Enter Mobile Number : tejosai
+
+Mobile Number Invalid
