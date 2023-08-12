@@ -1,0 +1,51 @@
+%{
+int nchar, nword, nline;
+%}
+%%
+\n { nline++; nchar++; }
+[^ \t\n]+ { nword++, nchar += yyleng; }
+. { nchar++; }
+%%
+int yywrap(void) {
+return 1;
+}
+int main(int argc, char *argv[]) {
+yyin = fopen(argv[1], "r");
+yylex();
+printf("Number of characters = %d\n", nchar);
+printf("Number of words = %d\n", nword);
+printf("Number of lines = %d\n", nline);
+fclose(yyin);
+}
+
+
+output:
+Microsoft Windows [Version 10.0.14393]
+(c) 2016 Microsoft Corporation. All rights reserved.
+
+C:\Users\sse\Desktop\lexi>set path=C:\Program Files\GnuWin32\bin
+
+C:\Users\sse\Desktop\lexi>flex line.l.txt
+
+C:\Users\sse\Desktop\lexi>set path=C:\MinGW\bin
+
+C:\Users\sse\Desktop\lexi>gcc lex.yy.c
+
+C:\Users\sse\Desktop\lexi>a
+#include<stdio.h>
+int main()
+{
+int number1,number2,sum;
+printf("enter two integers:");
+scanf("%d%d",&number1,&number2);
+sum=number1+number2;
+printf("%d+%d=%d", number1,number2,sum);
+return 0;
+}
+^Z
+Number of characters = 194
+Number of words = 16
+Number of lines = 10
+
+C:\Users\sse\Desktop\lexi>
+
