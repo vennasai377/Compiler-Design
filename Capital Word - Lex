@@ -1,0 +1,31 @@
+%%
+[A-Z]+[\t\n ] { printf("%s is a capital word\n", yytext); }
+.;
+%%
+int main()
+{
+printf("enter string:\n");
+yylex();
+}
+int yywrap()
+{
+return 1;
+}
+
+
+output:
+
+C:\Users\sse\Desktop\7>set path=C:\Program Files\GnuWin32\bin
+
+C:\Users\sse\Desktop\7>flex capitalwords.l.txt
+
+C:\Users\sse\Desktop\7>set path=C:\MinGW\bin
+
+C:\Users\sse\Desktop\7>gcc lex.yy.c
+
+C:\Users\sse\Desktop\7>a
+enter string:
+THIS IS tejosai
+THIS  is a capital word
+IS  is a capital word
+tejosai
