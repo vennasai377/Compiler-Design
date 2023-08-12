@@ -1,0 +1,39 @@
+%{
+int vow_count=0;
+int const_count=0;
+%}
+%%
+[aeiouAEIOU] { vow_count++; }
+[a-zA-Z] { const_count++; }
+%%
+int yywrap()
+{ }
+int main()
+{
+printf("enter the sentence:");
+yylex();
+printf("no of vowels are %d\n",vow_count);
+printf("no of consonants are %d\n",const_count);
+return 0;
+}
+
+output:
+Microsoft Windows [Version 10.0.14393]
+(c) 2016 Microsoft Corporation. All rights reserved.
+
+C:\Users\sse\Desktop\16>set path=C:\Program Files\GnuWin32\bin
+
+C:\Users\sse\Desktop\16>flex vowel.l.txt
+
+C:\Users\sse\Desktop\16>set path=C:\MinGW\bin
+
+C:\Users\sse\Desktop\16>gcc lex.yy.c
+
+C:\Users\sse\Desktop\16>a
+enter the sentence:this is friut
+
+^Z
+no of vowels are 4
+no of consonants are 7
+
+C:\Users\sse\Desktop\16>
