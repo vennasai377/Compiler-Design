@@ -1,0 +1,41 @@
+%{
+int i;
+%}
+%%
+[a-z A-Z]* { for(i=0;i<=yyleng;i++) 
+{ if((yytext[i]=='a')&&(yytext[i+1]=='b')&&(yytext[i+2]=='c'))
+{ yytext[i]='A';
+yytext[i+1]='B';
+yytext[i+2]='C';
+}
+}
+printf("%s",yytext);
+}
+[\t]* return 1;
+.* {ECHO;}
+\n {printf("%s",yytext);}
+%%
+int main()
+{
+yylex();
+}
+int yywrap()
+{
+return 1;
+}
+
+output:
+Microsoft Windows [Version 10.0.14393]
+(c) 2016 Microsoft Corporation. All rights reserved.
+
+C:\Users\sse\Desktop\9>set path=C:\Program Files\GnuWin32\bin
+
+C:\Users\sse\Desktop\9>flex substring.l.txt
+
+C:\Users\sse\Desktop\9>set path=C:\MinGW\bin
+
+C:\Users\sse\Desktop\9>gcc lex.yy.c
+
+C:\Users\sse\Desktop\9>a
+abcdefghijklmnopqrstuvwxyz
+ABCdefghijklmnopqrstuvwxyz
