@@ -1,0 +1,46 @@
+%{
+int positive_no=0,negative_no=0;
+%}
+%%
+^[-][0-9]+ { negative_no++; 
+printf("negative number = %s\n", yytext); }
+[0-9]+ { positive_no++;
+printf("positive number = %s\n", yytext); }
+%%
+int yywrap() { }
+int main()
+{
+yylex();
+printf("number of positive number = %d," "number of negative numbers = %d\n",positive_no,negative_no);
+return 0;
+}
+
+output:
+:\Users\sse\Desktop\11>flex positivenegative.l.txt
+
+C:\Users\sse\Desktop\11>set path=C:\MinGW\bin
+
+C:\Users\sse\Desktop\11>gcc lex.yy.c
+
+C:\Users\sse\Desktop\11>a
+4
+positive number = 4
+
+^Z
+number of positive number = 1,number of negative numbers = 0
+
+C:\Users\sse\Desktop\11>a
+19
+positive number = 19
+
+-33
+negative number = -33
+
+1
+positive number = 1
+
+-35
+negative number = -35
+
+^Z
+number of positive number = 2,number of negative numbers = 2
