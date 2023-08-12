@@ -1,0 +1,46 @@
+%{
+int nmacro, nheader;
+%}
+%%
+^#define { nmacro++; }
+^#include { nheader++; }
+.|\n {  }
+%%
+int yywrap(void) {
+return 1;
+}
+int main(int argc, char *argv[]) {
+yyin = fopen(argv[1], "r");
+yylex();
+printf("Number of macros defined = %d\n", nmacro);
+printf("Number of header files included = %d\n", nheader);
+fclose(yyin);
+}
+
+
+output:
+Microsoft Windows [Version 10.0.14393]
+(c) 2016 Microsoft Corporation. All rights reserved.
+
+C:\Users\sse\Desktop\3>set path=C:\Program Files\GnuWin32\bin
+
+C:\Users\sse\Desktop\3>flex macro.l.txt
+
+C:\Users\sse\Desktop\3>set path=C:\MinGW\bin
+
+C:\Users\sse\Desktop\3>gcc lex.yy.c
+
+C:\Users\sse\Desktop\3>a
+#define P1 3.14
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+int a,b,c=30;
+printf("hello");
+}
+^Z
+Number of macros defined = 1
+Number of header files included = 2
+
+C:\Users\sse\Desktop\3>
