@@ -1,0 +1,32 @@
+%{
+%}
+%%
+www\.[a-zA-Z0-9]+\.(com\in) { printf("valid URL\n");}
+.+ { printf("invalid URL\n"); }
+%%
+int yywrap() { }
+int main() {
+yylex();
+return 0;
+}
+
+output:
+C:\Users\sse\Desktop\12>set path=C:\MinGW\bin
+
+C:\Users\sse\Desktop\12>set path=C:\Program Files\GnuWin32\bin
+
+C:\Users\sse\Desktop\12>flex url.l.txt
+
+C:\Users\sse\Desktop\12>set path=C:\MinGW\bin
+
+C:\Users\sse\Desktop\12>gcc lex.yy.c
+
+C:\Users\sse\Desktop\12>a
+google.com
+invalid URL
+
+^Z
+
+C:\Users\sse\Desktop\12>a
+google.tech
+invalid URL
