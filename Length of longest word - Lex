@@ -1,0 +1,32 @@
+%{
+int counter = 0;
+%}
+%%
+[a-zA-Z]+ {if (yyleng > counter) {counter = yyleng;}
+}
+%%  
+int main() {
+yylex();
+printf("largest: %d", counter);
+printf("\n");
+}
+int yywrap() {
+return 1;
+}
+
+output:
+C:\Users\sse\Desktop\19>set path=C:\Program Files\GnuWin32\bin
+
+C:\Users\sse\Desktop\19>flex length.l.txt
+
+C:\Users\sse\Desktop\19>set path=C:\MinGW\bin
+
+C:\Users\sse\Desktop\19>gcc lex.yy.c
+
+C:\Users\sse\Desktop\19>a
+this is saveetha
+
+^Z
+largest: 8
+
+C:\Users\sse\Desktop\19>
