@@ -1,0 +1,33 @@
+%{
+int flag=0 ;
+%}
+%%
+[a-z.0-9]+@[a-z]+".com"/".in" { flag=1; }
+%%
+int main()
+{
+yylex();
+if(flag==0)
+printf("valid email id");
+else
+printf("in valid email id");
+}
+int yywrap()
+{ return 1;
+}
+
+output:
+C:\Users\sse\Desktop\6>set path=C:\Program Files\GnuWin32\bin
+
+C:\Users\sse\Desktop\6>flex email.l.txt
+
+C:\Users\sse\Desktop\6>set path=C:\MinGW\bin
+
+C:\Users\sse\Desktop\6>gcc lex.yy.c
+
+C:\Users\sse\Desktop\6>a
+saveetha@gmail.com
+saveetha@gmail.com
+^Z
+valid email id
+C:\Users\sse\Desktop\6>
