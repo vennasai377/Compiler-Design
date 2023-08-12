@@ -1,0 +1,33 @@
+%{
+#include<stdio.h>
+%}
+%%
+[0-3][0-9]\/[0-1][1-2]\/[1-2][0-9][0-9][0-9] { 3;} { printf("Valid"); }
+.+ { printf("invalid"); }
+%%
+int yywrap() { }
+int main()
+{
+yylex();
+}
+
+output:
+icrosoft Windows [Version 10.0.14393]
+(c) 2016 Microsoft Corporation. All rights reserved.
+
+C:\Users\sse\Desktop\13>set path=C:\Program Files\GnuWin32\bin
+
+C:\Users\sse\Desktop\13>flex dob.l.txt
+
+C:\Users\sse\Desktop\13>set path=C:\MinGW\bin
+
+C:\Users\sse\Desktop\13>gcc lex.yy.c
+
+C:\Users\sse\Desktop\13>a
+27/12/2003
+Valid
+^Z
+
+C:\Users\sse\Desktop\13>a
+37/30/3908
+invalid
